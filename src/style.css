@@ -1,18 +1,148 @@
 /* No consistency in CSS classes, inline styles dominate */
+/* CSS PROPERTIES -> VARIABLES IN CSS */
+
+:root {
+  --font-title: Arial, sans-serif;
+  --font-body: Georgia, serif;
+
+  /* DESIGN SYSTEM */
+  --font-size-base: 1rem;
+  --font-size-large: 1.5rem;
+  --font-size-xlarge: 2rem;
+
+  --padding-base: 1rem;
+  --padding-large: 1.5rem;
+
+  --margin-base: 1rem;
+  --margin-large: 1.5rem;
+  --margin-xlarge: 2rem;
+
+  --border-radius: 10px;
+
+  /* COLOURS MARGINS SHADOWS*/
+  --color-darkest: #3f4739;
+  --color-dark: #717568;
+  --color-primary: #bacba9;
+  --color-secondary: #e1f4cb;
+  --color-tertiary: #f1bf98;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  color: var(--color-darkest);
+  background-color: var(--color-secondary);
+  box-sizing: border-box;
+}
+
+body > * {
+  padding: var(--padding-base) var(--padding-large);
 }
 
 header {
+  background-color: var(--color-dark);
+  color: var(--color-secondary);
+  font-family: var(--font-title);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav {
+  display: flex;
+  gap: var(--margin-large);
+}
+
+nav a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-large);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.hero > * {
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-title);
+}
+
+h1 {
+  font-size: var(--font-size-xlarge);
+  margin: var(--margin-xlarge) 0;
+}
+
+.recommended-products {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--margin-xlarge);
+  justify-content: center;
+}
+
+.recommended-products h1 {
+  width: 100vw;
+  margin: 0;
+  margin-top: var(--margin-xlarge);
   text-align: center;
-  padding: 10px;
-  background-color: #e0e0e0;
 }
 
 .product {
-  border: 1px solid black;
-  margin: 10px;
-  padding: 10px;
+  background-color: var(--color-primary);
+  padding: var(--padding-base);
+  border-radius: var(--border-radius);
   width: 300px; /* Not responsive */
+}
+
+.product__img-holder {
+  height: 400px;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background-color: white;
+}
+
+.product__img-holder:hover {
+  overflow: unset;
+  height: auto;
+}
+
+.product img {
+  width: 100%;
+  border-radius: var(--border-radius);
+}
+
+.product h2 {
+  margin: var(--margin-base) 0;
+}
+
+.faq {
+  margin: var(--margin-large) 0;
+}
+
+.faq > * {
+  margin: var(--margin-xlarge) 0;
+}
+
+@media (min-width: 768px) {
+  .recommended-products h1 {
+    text-align: left;
+  }
+
+  .product__img-holder:hover {
+    overflow: hidden;
+    height: 400px;
+  }
 }
